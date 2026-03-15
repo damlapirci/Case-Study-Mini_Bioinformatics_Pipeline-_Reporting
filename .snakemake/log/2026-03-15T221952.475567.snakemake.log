@@ -1,0 +1,8 @@
+Assuming unrestricted shared filesystem usage.
+host: DamlaPirci-1
+Building DAG of jobs...
+MissingInputException in rule nanoplot in file "C:\Users\hp\bio_project\fastq_pipeline\Snakefile", line 8:
+Missing input files for rule nanoplot:
+    output: results/qc/NanoPlot-report.html, results/qc/NanoStats.txt
+    affected files:
+        data/barcode77.fastq.gz

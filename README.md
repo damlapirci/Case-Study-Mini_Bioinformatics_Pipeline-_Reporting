@@ -8,7 +8,7 @@ I designed this repository specifically as a response to Professor Kılıç's re
 
 To ensure I provided exactly what was requested, my pipeline strictly fulfills the following objectives:
 
-1. **Automated Long-Read QC**: I integrated `NanoPlot`, a specialized tool designed specifically for long-read sequencing data, to generate comprehensive HTML quality reports.
+1. **Automated Long-Read QC**: The pipeline acts as a QC tool, automatically scanning the sequences to extract crucial metadata.
 2. **Custom Python Statistics**: I wrote a custom Python script (`scripts/calc_stats.py`) that parses the exact FASTQ file read-by-read and strictly calculates only the requested metrics:
    - **GC Content (%)**
    - **Read Length (bp)**
@@ -19,7 +19,6 @@ To ensure I provided exactly what was requested, my pipeline strictly fulfills t
 
 ```text
 ├── config.yaml          # Points to the target FASTQ file
-├── environment.yml      # Conda environment explicitly defining the exact dependencies
 ├── Snakefile            # My Snakemake pipeline definition
 ├── README.md            # This documentation file
 ├── email_draft.txt      # My draft email to Professor Kılıç summarizing the results
@@ -29,29 +28,22 @@ To ensure I provided exactly what was requested, my pipeline strictly fulfills t
 └── data/                # Where the input FASTQ file should be placed (e.g., barcode77.fastq.gz)
 ```
 
-## How to Run My Code
+## How to Run My Code (Windows Friendly)
 
-To make this pipeline 100% reproducible, I defined the exact environment in `environment.yml`. 
+I have optimized this setup to run native on Windows without complicated environment managers like Conda. 
 
-### Step 1: Set Up the Environment
-
-If you have Conda installed on your machine, you can replicate my environment perfectly:
+### Step 1: Install Dependencies
+Open your `Powershell` or `VS Code Terminal` and install the required Python libraries via `pip`:
 
 ```bash
-# Create the environment with all my dependencies
-conda env create -f environment.yml
-
-# Activate the environment
-conda activate fastq-pipeline
+pip install snakemake biopython pandas matplotlib seaborn
 ```
 
 ### Step 2: Configure the Data
-
 Place the raw data you want to analyze inside the `data/` directory. Then, open my `config.yaml` file and make sure the `input_fastq` variable points to your file (for example, `data/barcode77.fastq.gz`).
 
 ### Step 3: Run the Pipeline
-
-With the environment activated, you can run my entire workflow with a single command:
+Navigate to this folder and run the entire workflow with a single command:
 
 ```bash
 snakemake --cores 1
@@ -59,7 +51,7 @@ snakemake --cores 1
 
 ## Expected Outputs
 
-Once my pipeline finishes running, it will automatically generate a `results/` folder with two main directories:
+Once my pipeline finishes running, it will automatically generate a `results/` folder with the following:
 
-1. **`results/qc/`**: This contains `NanoPlot-report.html`. You can open this in your browser to see standard long-read metrics.
-2. **`results/stats/`**: This contains `read_stats.csv` (the raw calculations for every single read) and **`read_stats_summary_plots.png`**. The PNG file is the final visual representation of the GC Content, Read Lengths, and Mean Quality Scores, which is perfect for showing to the Professor!
+- **`results/stats/read_stats.csv`**: The raw calculations for every single read.
+- **`results/stats/read_stats_summary_plots.png`**: The final visual representation of the GC Content, Read Lengths, and Mean Quality Scores. This PNG file is perfect for showing to the Professor!
