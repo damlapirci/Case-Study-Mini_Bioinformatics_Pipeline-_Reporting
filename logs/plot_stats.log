@@ -1,0 +1,18 @@
+=== Summary Statistics ===
+       GC_Content  Read_Length  Mean_Quality
+count  100.000000   100.000000    100.000000
+mean    49.991516  2655.280000     29.987191
+std      1.058534  1225.681522      0.136490
+min     46.854305   604.000000     29.581349
+25%     49.436712  1519.000000     29.905127
+50%     50.037246  2698.500000     29.976398
+75%     50.727317  3764.000000     30.070750
+max     52.571429  4942.000000     30.442650
+
+=== Medians ===
+GC_Content        50.037246
+Read_Length     2698.500000
+Mean_Quality      29.976398
+dtype: float64
+
+Plots saved to results/stats/read_stats_summary_plots.png

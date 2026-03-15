@@ -2,20 +2,7 @@ configfile: "config.yaml"
 
 rule all:
     input:
-        "results/qc/NanoStats.txt",
         "results/stats/read_stats_summary_plots.png"
-
-rule nanoplot:
-    input:
-        fastq = config["input_fastq"]
-    output:
-        report = "results/qc/NanoPlot-report.html",
-        stats = "results/qc/NanoStats.txt"
-    log:
-        "logs/nanoplot.log"
-    # NanoPlot creates an output directory specified by -o
-    shell:
-        "NanoPlot --fastq {input.fastq} -o results/qc/ > {log} 2>&1"
 
 rule calculate_stats:
     input:

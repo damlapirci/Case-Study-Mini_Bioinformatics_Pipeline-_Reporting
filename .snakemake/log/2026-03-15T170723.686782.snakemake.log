@@ -1,0 +1,51 @@
+Assuming unrestricted shared filesystem usage.
+host: DamlaPirci-1
+Building DAG of jobs...
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+calculate_stats        1
+plot_stats             1
+all                    1
+total                  3
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 15 17:07:23 2026]
+localrule calculate_stats:
+    input: data/barcode77.fastq.gz, scripts/calc_stats.py
+    output: results/stats/read_stats.csv
+    log: logs/calc_stats.log
+    jobid: 2
+    reason: Missing output files: results/stats/read_stats.csv
+    resources: tmpdir=C:\Users\hp\AppData\Local\Temp
+[Sun Mar 15 17:07:25 2026]
+Finished jobid: 2 (Rule: calculate_stats)
+1 of 3 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 15 17:07:25 2026]
+localrule plot_stats:
+    input: results/stats/read_stats.csv, scripts/plot_stats.py
+    output: results/stats/read_stats_summary_plots.png
+    log: logs/plot_stats.log
+    jobid: 1
+    reason: Missing output files: results/stats/read_stats_summary_plots.png; Input files updated by another job: results/stats/read_stats.csv
+    resources: tmpdir=C:\Users\hp\AppData\Local\Temp
+[Sun Mar 15 17:07:30 2026]
+Finished jobid: 1 (Rule: plot_stats)
+2 of 3 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Mar 15 17:07:30 2026]
+localrule all:
+    input: results/stats/read_stats_summary_plots.png
+    jobid: 0
+    reason: Input files updated by another job: results/stats/read_stats_summary_plots.png
+    resources: tmpdir=C:\Users\hp\AppData\Local\Temp
+[Sun Mar 15 17:07:30 2026]
+Finished jobid: 0 (Rule: all)
+3 of 3 steps (100%) done
+Complete log(s): C:\Users\hp\bio_project\fastq_pipeline\.snakemake\log\2026-03-15T170723.686782.snakemake.log
