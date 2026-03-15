@@ -1,0 +1,25 @@
+Subject: QC Report for the Raw Long-Read Sequencing Data
+
+Dear Professor Kılıç,
+
+I have received the raw long-read sequencing data (barcode77) you sent over. To evaluate the quality of the run before we proceed with full alignment, I developed an automated Quality Control (QC) pipeline.
+
+Here is a quick summary of what I did:
+1. I wrote a custom analysis script that parsed the raw FASTQ file read-by-read.
+2. For every single read, the script calculated three essential metrics: GC Content percentage, Read Length, and Mean Quality Score.
+3. I then generated histograms (with density curves) to visualize the overall distribution of these metrics across the entire dataset.
+
+Interpretation of the Results:
+Based on the generated visualizations (located in the `results/stats/` folder):
+
+- Read Lengths: The lengths display a typical long-read profile, with a broad distribution and a solid N50 metric. This is exactly as expected for this type of sequencing technology, confirming that the library preparation successfully yielded long fragments.
+- Quality Scores: The mean read quality scores are very healthy. The vast majority of the reads fall well above the standard Phred threshold, indicating that the sequencing accuracy is more than sufficient for our downstream needs.
+- GC Content: The GC distribution looks normal and symmetric, with no obvious secondary peaks that would suggest major contamination.
+
+Recommendation:
+Given that the read lengths match our expectations and the quality scores are robust, the data looks excellent. I highly recommend that we proceed directly to the alignment and assembly phase.
+
+Please let me know if you would like to review the generated graphs or if you have any questions!
+
+Best regards,
+Damla Pirci
