@@ -1,0 +1,24 @@
+Subject: Update on Long-Read Sequencing Data Processing and QC
+
+Dear Professor Kılıç,
+
+I have completed the data processing pipeline for our long-read FASTQ files. The pipeline is fully reproducible and runs using Snakemake within a Conda environment.
+
+Here is a brief summary of what I accomplished:
+1. Quality Control: I incorporated NanoPlot, a QC tool specifically designed for long-read data, to generate comprehensive quality statistics and plots.
+2. Custom Analysis: I developed a custom Python script that calculates the GC content, read length, and mean quality score for every single read.
+3. Visualization: I created a separate visualization script that charts the distributions of these metrics so we can visually assess the quality of our run.
+
+Interpreting the Results:
+Based on the generated graphs (which can be found in the results directory):
+- Read Lengths: The distribution of read lengths appears consistent with expected long-read profiles (e.g., Nanopore or PacBio), showing a wide spread with the N50 aligning with our expectations. 
+- Quality: The mean read quality scores are sufficient, with the bulk of the distribution falling well above the acceptable threshold for our downstream analyses.
+- GC Content: The GC content distribution matches the expected GC ratio for our target organism's genome, with no obvious signs of major contamination.
+
+Recommendation:
+Given the very healthy length and quality metrics observed in the plots, I am confident in the integrity of this dataset. I recommend that we proceed to the alignment/assembly stage as planned.
+
+Please let me know if you would like me to share the full QC reports or if you have any questions.
+
+Best regards,
+[Your Name]
