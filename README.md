@@ -39,8 +39,11 @@ Open your `Powershell` or `VS Code Terminal` and install the required Python lib
 pip install snakemake biopython pandas matplotlib seaborn
 ```
 
-### Step 2: Configure the Data
-Place the raw data you want to analyze inside the `data/` directory. Then, open my `config.yaml` file and make sure the `input_fastq` variable points to your file (for example, `data/barcode77.fastq.gz`).
+### Step 2: Ensure Data is in Place
+The repository already includes the target raw sequencing file (`data/barcode77.fastq.gz`). Just ensure that the `config.yaml` file points to it:
+```yaml
+input_fastq: "data/barcode77.fastq.gz"
+```
 
 ### Step 3: Run the Pipeline
 Navigate to this folder and run the entire workflow with a single command:
